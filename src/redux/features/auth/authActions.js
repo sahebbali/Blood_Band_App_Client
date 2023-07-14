@@ -57,7 +57,7 @@ export const userRegister = createAsyncThunk(
         website,
       });
       if (data?.success) {
-        alert("User Registerd Successfully");
+        toast.success("User Registerd Successfully");
         window.location.replace("/login");
         // toast.success("User Registerd Successfully");
       }

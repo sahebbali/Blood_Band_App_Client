@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import InputType from "./../Form/InputType";
 import API from "./../../../services/API";
+import { toast } from "react-toastify";
 
 const Modal = () => {
   const [inventoryType, setInventoryType] = useState("in");
   const [bloodGroup, setBloodGroup] = useState("");
   const [quantity, setQuantity] = useState(0);
-  const [donarEmail, setDonarEmail] = useState("");
+  const [email, setEmail] = useState("");
   const { user } = useSelector((state) => state.auth);
   // handle modal data
   const handleModalSubmit = async () => {
@@ -16,19 +17,19 @@ const Modal = () => {
         return alert("Please Provide All Fields");
       }
       const { data } = await API.post("/inventory/create-inventory", {
-        donarEmail,
-        email: user?.email,
+        email,
         organisation: user?._id,
         inventoryType,
         bloodGroup,
         quantity,
       });
+      console.log("My created Data:", data)
       if (data?.success) {
-        alert("New Record Created");
+        toast.success("New Record Created")
         window.location.reload();
       }
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
       console.log(error);
       window.location.reload();
     }
@@ -109,8 +110,8 @@ const Modal = () => {
                 labelText={"Donar Email"}
                 labelFor={"donarEmail"}
                 inputType={"email"}
-                value={donarEmail}
-                onChange={(e) => setDonarEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <InputType
                 labelText={"Quanitity (ML)"}
