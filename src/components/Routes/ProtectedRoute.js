@@ -12,8 +12,10 @@ const ProtectedRoute = ({ children }) => {
   const getUser = async () => {
     try {
       const { data } = await API.get("/auth/current-user");
+      console.log("current usrer:",data)
       if (data?.success) {
         dispatch(getCurrentUser(data));
+        console.log(dispatch);
       }
     } catch (error) {
       localStorage.clear();
