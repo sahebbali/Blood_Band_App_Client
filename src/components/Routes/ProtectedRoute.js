@@ -8,28 +8,32 @@ const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //get user current
-  const getUser = async () => {
-    try {
-      const { data } = await API.get("/auth/current-user");
-      if (data?.success) {
-        dispatch(getCurrentUser(data));
-      }
-    } catch (error) {
-      localStorage.clear();
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await API.get("/auth/current-user");
+        if (data?.success) {
+          dispatch(getCurrentUser(data));
+        } else {
+          localStorage.clear();
+          navigate("/login");
+        }
+      } catch (error) {
+        localStorage.clear();
+        console.log(error);
+        navigate("/login");
+      }
+    };
+
     getUser();
-  }, );
+  }, [dispatch, navigate]);
 
   if (localStorage.getItem("token")) {
     return children;
   } else {
-    navigate("/login"); // Use the navigate function instead
-    return null; // Return null or a loading component while redirecting
+    console.log("hello home");
+    navigate("/login");
+    return null;
   }
 };
 

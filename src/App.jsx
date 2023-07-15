@@ -102,14 +102,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
+       
         <Route
           path="/login"
           element={
@@ -124,6 +117,14 @@ function App() {
             <PublicRoute>
               <Register />
             </PublicRoute>
+          }
+        />
+         <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
           }
         />
       </Routes>
