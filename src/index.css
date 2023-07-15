@@ -62,7 +62,7 @@
   width: 48px;
   height: 48px;
   border: 5px solid #fff;
-  border-bottom-color: #ff3d00;
+  border-bottom-color: #8860EF;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
@@ -83,11 +83,25 @@
 =================== */
 
 .navbar {
-  background-color: black !important;
-  color: white !important;
+  background-color: #8860EF;
+  color: white ;
 }
 .nav-link,
 .navbar-brand {
-  background-color: black !important;
-  color: white !important;
+  background-color: #8860EF ;
+  color: whitesmoke ;
+  cursor: pointer;
 }
+/* .banaer:hover{
+  color:#000
+} */
+/* .navrow:hover{
+  color:#000
+} */
+/* .nav-item:hover{
+  color: #000;
+} */
+/* .nav-link,
+.navbar-brand:hover {
+  color: #000;
+} */

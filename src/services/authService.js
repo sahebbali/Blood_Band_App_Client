@@ -27,6 +27,7 @@ export const handleLogin = (e, email, password, role) => {
   ) => {
     e.preventDefault();
     try {
+      console.log("hello 23")
       store.dispatch(userRegister({
         name,
         role,

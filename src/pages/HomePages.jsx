@@ -15,8 +15,7 @@ const HomePages = () => {
   const getBloodRecords = async () => {
     try {
       const { data } = await API.get("/inventory/get-inventory");
-      console.log(data)
-      if (data?.success) {
+        if (data?.success) {
         setData(data?.inventory);
         // console.log(data);
       }
